@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  website:
+    image: nginx:alpine
+    container_name: nexcorp-website
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
