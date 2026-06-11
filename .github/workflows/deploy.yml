@@ -1,0 +1,62 @@
+name: Test, Build & Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+# GitHub Pages deploy ke liye zaroori permissions
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # ──────────── 1. TEST ────────────
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate website files
+        run: |
+          test -f index.html && echo "✓ index.html found"
+          grep -q "<!DOCTYPE html>" index.html && echo "✓ DOCTYPE ok"
+          grep -q "</html>" index.html && echo "✓ closing tag ok"
+          grep -q "SoftSkill" index.html && echo "✓ site content ok"
+          echo "✓ All tests passed"
+
+  # ──────────── 2. BUILD ────────────
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  # ──────────── 3. DEPLOY ────────────
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

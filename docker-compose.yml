@@ -1,0 +1,9 @@
+services:
+  website:
+    # NOTE: "choudheryahsan" ko apne Docker Hub username se replace karein agar different hai
+    image: choudheryahsan/softskillit-website:latest
+    build: .
+    container_name: softskillit-web
+    ports:
+      - "80:80"
+    restart: unless-stopped
