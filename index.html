@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoftSkill IT — Premier IT Training Institute | Lahore & Online</title>
+<meta name="description" content="Pakistan's premier hands-on IT training institute. CCNA, CCNP, MikroTik, Fortinet, Linux, Windows Server, AWS Cloud & DevOps. Real enterprise labs, small batches, career support. Lahore & Online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f6f8fb;--white:#fff;--ink:#0a1020;--ink2:#18233a;--ink3:#46536b;--muted:#65718a;--pale:#97a2b8;--line:#e4e9f1;
+  --blue:#2563eb;--blue-d:#1d4fd7;--blue-lt:#eaf0fe;--violet:#7c3aed;--cyan:#06b6d4;--green:#10b981;--amber:#f59e0b;
+  --dark:#070d1b;--dark2:#0b1426;--dark3:#101c33;
+  --grad:linear-gradient(100deg,#2563eb 0%,#7c3aed 55%,#06b6d4 120%);
+  --f-head:'Sora',sans-serif;--f-body:'Inter',sans-serif;--f-mono:'JetBrains Mono',monospace;
+  --r:12px;--r-lg:18px;--r-xl:26px;
+  --sh:0 1px 2px rgba(10,16,32,.05),0 8px 28px rgba(10,16,32,.07);
+  --sh-lg:0 4px 16px rgba(10,16,32,.08),0 28px 64px rgba(10,16,32,.14);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--white);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1220px;margin:0 auto;padding:0 32px}
+.rev{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rev.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.06s}.d2{transition-delay:.13s}.d3{transition-delay:.20s}.d4{transition-delay:.27s}.d5{transition-delay:.34s}.d6{transition-delay:.41s}
+@media(prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}.mq-track{animation:none!important}}
+
+/* ═ PROGRESS BAR ═ */
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:1000;width:0%;transition:width .1s linear}
+
+/* ═ NAV ═ */
+header{position:fixed;top:0;left:0;right:0;z-index:600;transition:all .35s}
+header .hwrap{max-width:1220px;margin:14px auto 0;padding:0 32px}
+.navbox{display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 14px 0 22px;border-radius:16px;background:rgba(10,16,32,.55);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.09);transition:all .35s}
+header.scrolled .navbox{background:rgba(7,13,27,.88);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-mark{width:40px;height:40px;border-radius:11px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--f-head);font-weight:800;color:#fff;font-size:1.05rem;box-shadow:0 6px 18px rgba(37,99,235,.4)}
+.logo-text{font-family:var(--f-head);font-weight:700;font-size:1.16rem;color:#fff;letter-spacing:-.4px;line-height:1}
+.logo-text span{background:linear-gradient(90deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo-sub{font-family:var(--f-mono);font-size:.52rem;letter-spacing:2.4px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:4px;display:block}
+.menu{display:flex;gap:2px;list-style:none}
+.menu a{display:block;padding:9px 15px;border-radius:9px;color:rgba(255,255,255,.62);text-decoration:none;font-size:.86rem;font-weight:500;transition:all .2s}
+.menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-btns{display:flex;align-items:center;gap:9px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--f-head);font-weight:600;font-size:.86rem;padding:12px 24px;border-radius:11px;text-decoration:none;border:none;cursor:pointer;transition:all .25s;letter-spacing:0;white-space:nowrap}
+.btn-grad{background:var(--grad);background-size:160% 100%;color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.35)}
+.btn-grad:hover{background-position:90% 0;transform:translateY(-2px);box-shadow:0 14px 34px rgba(37,99,235,.45)}
+.btn-glass{background:rgba(255,255,255,.07);color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.16)}
+.btn-glass:hover{background:rgba(255,255,255,.13);color:#fff}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.18)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#1c2a4a;transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px}
+.burger span{width:22px;height:2px;background:rgba(255,255,255,.85);border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mmenu{position:fixed;inset:0;background:rgba(7,13,27,.97);backdrop-filter:blur(24px);z-index:590;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mmenu.open{opacity:1;pointer-events:all}
+.mmenu a{font-family:var(--f-head);font-size:1.45rem;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;padding:12px 28px;border-radius:12px}
+.mmenu a:hover{color:#fff;background:rgba(255,255,255,.07)}
+
+/* ═ HERO ═ */
+.hero{background:var(--dark);position:relative;overflow:hidden;padding:170px 0 0}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 55% 45% at 78% 18%,rgba(37,99,235,.28) 0%,transparent 62%),
+  radial-gradient(ellipse 40% 40% at 8% 90%,rgba(124,58,237,.18) 0%,transparent 58%),
+  radial-gradient(ellipse 35% 35% at 50% 110%,rgba(6,182,212,.12) 0%,transparent 60%)}
+.hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 75% 60% at 50% 25%,#000 25%,transparent 72%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.12fr 1fr;gap:60px;align-items:center;padding-bottom:84px}
+.hpill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:99px;padding:8px 8px 8px 16px;margin-bottom:28px;font-size:.8rem;color:rgba(255,255,255,.65);font-weight:500}
+.hpill .px{background:var(--grad);color:#fff;font-size:.66rem;font-weight:700;font-family:var(--f-head);letter-spacing:.8px;text-transform:uppercase;border-radius:99px;padding:5px 12px}
+.hero h1{font-family:var(--f-head);font-size:clamp(2.5rem,4.8vw,4rem);font-weight:800;color:#fff;line-height:1.06;letter-spacing:-2px;margin-bottom:24px}
+.hero h1 .gr{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{color:rgba(255,255,255,.55);font-size:1.04rem;font-weight:300;line-height:1.9;max-width:530px;margin-bottom:36px}
+.hero .lead strong{color:rgba(255,255,255,.9);font-weight:500}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:44px}
+.hero-proof{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.avatars{display:flex}
+.avatars span{width:38px;height:38px;border-radius:50%;border:2.5px solid var(--dark);display:flex;align-items:center;justify-content:center;font-family:var(--f-head);font-size:.66rem;font-weight:700;color:#fff;margin-left:-10px}
+.avatars span:first-child{margin-left:0}
+.hp-text{font-size:.82rem;color:rgba(255,255,255,.5)}
+.hp-text b{color:#fff;font-weight:600}
+.hp-text .st{color:var(--amber);letter-spacing:1px}
+/* hero visual */
+.hv{position:relative}
+.term{background:rgba(13,22,42,.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.11);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.55)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:14px 18px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07)}
+.tdot{width:11px;height:11px;border-radius:50%}
+.term-title{font-family:var(--f-mono);font-size:.66rem;color:rgba(255,255,255,.35);margin-left:8px}
+.term-body{padding:22px;font-family:var(--f-mono);font-size:.77rem;line-height:2.05;min-height:230px}
+.tl{display:block;white-space:pre-wrap}
+.tl .p{color:#22d3ee}.tl .c{color:#dbe4f0}.tl .ok{color:#34d399}.tl .cm{color:#5b6b85}.tl .y{color:#fbbf24}
+.cursor{display:inline-block;width:8px;height:15px;background:#22d3ee;vertical-align:middle;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hv-chip{position:absolute;background:rgba(13,22,42,.9);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:13px 17px;display:flex;align-items:center;gap:12px;box-shadow:0 16px 44px rgba(0,0,0,.45);animation:float 5s ease-in-out infinite}
+.hv-chip .ic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.hv-chip .t{font-family:var(--f-head);font-size:.78rem;font-weight:600;color:#fff;line-height:1.2}
+.hv-chip .s{font-size:.66rem;color:rgba(255,255,255,.42);margin-top:2px}
+.chip1{top:-24px;right:-14px;animation-delay:0s}
+.chip2{bottom:-22px;left:-20px;animation-delay:2.4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* marquee */
+.mq{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);padding:20px 0;overflow:hidden}
+.mq::before,.mq::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+.mq::before{left:0;background:linear-gradient(90deg,var(--dark),transparent)}
+.mq::after{right:0;background:linear-gradient(-90deg,var(--dark),transparent)}
+.mq-track{display:flex;gap:64px;width:max-content;animation:scroll 30s linear infinite}
+.mq-item{font-family:var(--f-head);font-weight:700;font-size:1.02rem;color:rgba(255,255,255,.24);letter-spacing:.5px;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.mq-item::before{content:'◆';font-size:.5rem;color:rgba(34,211,238,.4)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ═ SECTIONS ═ */
+.sec{padding:104px 0}
+.sec-alt{background:var(--bg)}
+.kick{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:.66rem;font-weight:500;letter-spacing:2.6px;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+.kick::before{content:'';width:26px;height:2px;border-radius:2px;background:var(--grad)}
+h2{font-family:var(--f-head);font-size:clamp(1.85rem,3.3vw,2.7rem);font-weight:800;color:var(--ink);letter-spacing:-1.4px;line-height:1.12;margin-bottom:16px}
+h2 .gr{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--ink3);font-size:.98rem;font-weight:300;max-width:640px;line-height:1.85}
+.head-block{margin-bottom:56px}
+.head-center{text-align:center;margin-bottom:56px}
+.head-center .kick{justify-content:center}
+.head-center .kick::before{display:none}
+.head-center .sub{margin:0 auto}
+
+/* ═ COUNTERS ═ */
+.counters{position:relative;z-index:3;margin-top:-1px;background:var(--dark)}
+.counters .wrap{border-top:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:repeat(4,1fr);padding-top:0}
+.cnt{padding:34px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.cnt:last-child{border-right:none}
+.cnt-num{font-family:var(--f-head);font-size:2.4rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-1px}
+.cnt-num em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cnt-lbl{font-size:.76rem;color:rgba(255,255,255,.45);margin-top:9px;font-weight:500;letter-spacing:.4px}
+
+/* ═ COURSES ═ */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.tab{font-family:var(--f-head);font-size:.82rem;font-weight:600;color:var(--ink3);background:var(--white);border:1.5px solid var(--line);border-radius:99px;padding:10px 22px;cursor:pointer;transition:all .22s}
+.tab:hover{border-color:var(--blue);color:var(--blue)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(345px,1fr));gap:22px}
+.course{background:var(--white);border:1px solid var(--line);border-radius:var(--r-xl);padding:30px;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
+.course::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad);opacity:0;transition:opacity .3s}
+.course:hover{transform:translateY(-6px);box-shadow:var(--sh-lg);border-color:transparent}
+.course:hover::before{opacity:1}
+.course.hide{display:none}
+.co-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
+.co-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:.68rem;font-weight:500;letter-spacing:.5px}
+.i-blue{background:var(--blue-lt);color:var(--blue)}
+.i-red{background:#feeceb;color:#dc2626}
+.i-grn{background:#e6f9f2;color:#059669}
+.i-prp{background:#f2ecfe;color:#7c3aed}
+.i-org{background:#fef3e1;color:#d97706}
+.i-cyn{background:#dff6fb;color:#0891b2}
+.i-slt{background:#edf1f7;color:#475569}
+.badge{font-family:var(--f-head);font-size:.62rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:6px 13px;border-radius:99px}
+.b-hot{background:linear-gradient(90deg,#fff3e6,#ffe9d6);color:#c2410c}
+.b-adv{background:#f2ecfe;color:#7c3aed}
+.b-std{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.b-new{background:#e6f9f2;color:#059669}
+.co-name{font-family:var(--f-head);font-size:1.28rem;font-weight:700;color:var(--ink);letter-spacing:-.5px;margin-bottom:9px}
+.co-desc{font-size:.86rem;color:var(--ink3);font-weight:300;line-height:1.75;margin-bottom:18px}
+.co-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.co-meta span{font-size:.7rem;font-weight:600;color:var(--ink3);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+.co-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;flex:1}
+.co-list li{font-size:.84rem;color:var(--ink3);font-weight:300;padding-left:26px;position:relative;line-height:1.55}
+.co-list li::before{content:'';position:absolute;left:0;top:3px;width:17px;height:17px;border-radius:50%;background:var(--blue-lt) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='8'%3E%3Cpath d='M1 4l2.5 2.5L8 1' stroke='%232563eb' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center no-repeat}
+.co-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:20px}
+.co-fee{font-family:var(--f-head);font-size:1.34rem;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.co-fee small{display:block;font-family:var(--f-body);font-size:.67rem;font-weight:400;color:var(--pale);margin-top:1px;letter-spacing:.2px}
+.co-btn{font-family:var(--f-head);font-size:.8rem;font-weight:600;color:#fff;background:var(--ink);text-decoration:none;padding:11px 20px;border-radius:10px;transition:all .25s}
+.co-btn:hover{background:var(--blue);box-shadow:0 8px 22px rgba(37,99,235,.35)}
+.cnotes{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.cnotes span{font-size:.78rem;font-weight:500;color:var(--ink3);background:var(--white);border:1px solid var(--line);border-radius:99px;padding:9px 20px;box-shadow:var(--sh)}
+
+/* ═ WHY (bento) ═ */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.bcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r-xl);padding:34px 30px;transition:all .3s;position:relative;overflow:hidden}
+.bcard:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+.bcard.wide{grid-column:span 2;background:var(--dark);border-color:rgba(255,255,255,.08)}
+.bcard.wide h3{color:#fff}
+.bcard.wide p{color:rgba(255,255,255,.5)}
+.bcard.wide::after{content:'';position:absolute;right:-40px;bottom:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.35),transparent 70%)}
+.b-ico{width:50px;height:50px;border-radius:13px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:20px;box-shadow:0 8px 22px rgba(37,99,235,.3)}
+.bcard h3{font-family:var(--f-head);font-size:1.12rem;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-bottom:10px}
+.bcard p{font-size:.86rem;color:var(--ink3);font-weight:300;line-height:1.8}
+.lab-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
+.lab-tags span{font-family:var(--f-mono);font-size:.66rem;color:#9bd8ff;background:rgba(37,99,235,.18);border:1px solid rgba(37,99,235,.4);border-radius:8px;padding:7px 13px}
+
+/* ═ PATHS ═ */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.path{background:var(--white);border:1px solid var(--line);border-radius:var(--r-xl);padding:32px;transition:all .3s;display:flex;flex-direction:column}
+.path:hover{box-shadow:var(--sh-lg);transform:translateY(-5px)}
+.path-tag{align-self:flex-start;font-family:var(--f-mono);font-size:.62rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;padding:6px 13px;border-radius:8px;margin-bottom:18px}
+.pt-a{background:var(--blue-lt);color:var(--blue)}
+.pt-b{background:#feeceb;color:#dc2626}
+.pt-c{background:#fef3e1;color:#d97706}
+.path h3{font-family:var(--f-head);font-size:1.2rem;font-weight:700;letter-spacing:-.4px;margin-bottom:8px}
+.path .pd{font-size:.84rem;color:var(--ink3);font-weight:300;line-height:1.75;margin-bottom:22px}
+.chain{display:flex;flex-direction:column;gap:0;flex:1}
+.ch{display:flex;gap:14px;position:relative;padding-bottom:18px}
+.ch:last-child{padding-bottom:0}
+.ch::before{content:'';position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--line)}
+.ch:last-child::before{display:none}
+.ch .n{width:27px;height:27px;border-radius:50%;background:var(--white);border:2px solid var(--blue);color:var(--blue);font-family:var(--f-head);font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1}
+.ch .t{font-size:.85rem;font-weight:600;color:var(--ink2);padding-top:3px}
+.ch .s{font-size:.74rem;color:var(--muted);font-weight:300;margin-top:2px}
+.path .dur{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.path .dur b{color:var(--ink);font-family:var(--f-head);font-weight:700}
+
+/* ═ CORPORATE ═ */
+.corp{background:var(--dark);border-radius:28px;padding:68px;display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden}
+.corp::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 88% 25%,rgba(37,99,235,.3) 0%,transparent 60%),radial-gradient(ellipse 35% 50% at 5% 95%,rgba(124,58,237,.2) 0%,transparent 55%)}
+.corp>*{position:relative;z-index:1}
+.corp .kick{color:#7eb8ff}
+.corp .kick::before{background:linear-gradient(90deg,#7eb8ff,#22d3ee)}
+.corp h2{color:#fff}
+.corp .sub{color:rgba(255,255,255,.5);margin-bottom:32px}
+.corp-list{display:flex;flex-direction:column;gap:13px}
+.citem{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:15px;padding:18px 20px;transition:all .25s}
+.citem:hover{background:rgba(255,255,255,.09);border-color:rgba(37,99,235,.5);transform:translateX(5px)}
+.citem .ic{width:42px;height:42px;border-radius:11px;background:rgba(34,211,238,.13);border:1px solid rgba(34,211,238,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.citem .t{font-family:var(--f-head);font-size:.9rem;font-weight:600;color:#fff}
+.citem .s{font-size:.78rem;color:rgba(255,255,255,.45);font-weight:300;margin-top:3px;line-height:1.65}
+
+/* ═ TESTIMONIAL SLIDER ═ */
+.slider{position:relative;max-width:860px;margin:0 auto}
+.slides{overflow:hidden;border-radius:var(--r-xl)}
+.slide-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+.slide{flex:0 0 100%;background:var(--white);border:1px solid var(--line);border-radius:var(--r-xl);padding:48px 56px;text-align:center}
+.slide .stars{color:var(--amber);font-size:1rem;letter-spacing:3px;margin-bottom:22px}
+.slide .q{font-family:var(--f-head);font-size:1.18rem;font-weight:500;color:var(--ink2);line-height:1.75;letter-spacing:-.2px;margin-bottom:30px}
+.slide .who{display:flex;align-items:center;justify-content:center;gap:14px}
+.slide .av{width:48px;height:48px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-head);font-weight:700;font-size:.85rem}
+.slide .nm{font-family:var(--f-head);font-size:.92rem;font-weight:700;color:var(--ink);text-align:left}
+.slide .rl{font-size:.76rem;color:var(--muted);text-align:left;margin-top:2px}
+.dots{display:flex;justify-content:center;gap:9px;margin-top:26px}
+.dot{width:9px;height:9px;border-radius:99px;background:var(--line);border:none;cursor:pointer;transition:all .3s;padding:0}
+.dot.on{width:30px;background:var(--blue)}
+.sarrow{position:absolute;top:42%;width:46px;height:46px;border-radius:50%;background:var(--white);border:1px solid var(--line);box-shadow:var(--sh);cursor:pointer;font-size:1rem;color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:all .25s;z-index:2}
+.sarrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.sa-l{left:-66px}.sa-r{right:-66px}
+
+/* ═ FAQ ═ */
+.faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:13px}
+.qa{background:var(--white);border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:all .25s}
+.qa[open]{border-color:rgba(37,99,235,.45);box-shadow:var(--sh)}
+.qa summary{list-style:none;cursor:pointer;padding:21px 26px;font-family:var(--f-head);font-weight:600;font-size:.93rem;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:'+';font-family:var(--f-head);font-size:1.35rem;font-weight:400;color:var(--blue);transition:transform .28s;flex-shrink:0}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa .ans{padding:0 26px 23px;font-size:.87rem;color:var(--ink3);font-weight:300;line-height:1.85}
+
+/* ═ CTA ═ */
+.cta{background:var(--dark);border-radius:28px;padding:72px 64px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 120%,rgba(37,99,235,.4) 0%,transparent 65%)}
+.cta::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse 60% 60% at 50% 50%,#000,transparent)}
+.cta>*{position:relative;z-index:1}
+.cta h2{color:#fff;margin-bottom:14px}
+.cta p{color:rgba(255,255,255,.55);font-size:.96rem;font-weight:300;max-width:480px;margin:0 auto 36px}
+.cta-row{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+
+/* ═ CONTACT ═ */
+.contact-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:56px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:14px}
+.cbox{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:21px 23px;display:flex;gap:17px;align-items:center;transition:all .25s}
+.cbox:hover{border-color:rgba(37,99,235,.4);box-shadow:var(--sh);transform:translateX(4px)}
+.cbox .ic{width:46px;height:46px;border-radius:12px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.cbox .l{font-family:var(--f-mono);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--pale);margin-bottom:4px;font-weight:500}
+.cbox .v{font-size:.93rem;font-weight:600;color:var(--ink)}
+.cbox .v a{color:var(--blue);text-decoration:none}
+.cbox .v a:hover{text-decoration:underline}
+.form{background:var(--white);border:1px solid var(--line);border-radius:var(--r-xl);padding:40px;box-shadow:var(--sh-lg);position:relative;overflow:hidden}
+.form::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--grad)}
+.form h3{font-family:var(--f-head);font-size:1.3rem;font-weight:700;color:var(--ink);letter-spacing:-.4px;margin-bottom:6px}
+.form .fs{font-size:.84rem;color:var(--muted);font-weight:300;margin-bottom:28px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg.full{margin-bottom:15px}
+.fg label{font-size:.76rem;font-weight:600;color:var(--ink2)}
+.fg input,.fg select,.fg textarea{font-family:var(--f-body);font-size:.89rem;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:11px;padding:13px 15px;outline:none;transition:all .2s;resize:none;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--pale)}
+.fg select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2365718a' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+.fg textarea{min-height:100px}
+.fsub{width:100%;font-size:.92rem;padding:15px}
+.fnote{font-size:.8rem;color:var(--green);min-height:20px;margin-top:12px;text-align:center;font-weight:600}
+
+/* ═ FOOTER ═ */
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:72px 0 0;margin-top:104px;position:relative;overflow:hidden}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(37,99,235,.6),rgba(124,58,237,.6),transparent)}
+.fgrid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.25fr;gap:48px;padding-bottom:52px}
+.fcol h4{font-family:var(--f-head);font-size:.9rem;font-weight:700;color:#fff;margin-bottom:20px;letter-spacing:.2px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fcol a{color:rgba(255,255,255,.42);text-decoration:none;font-size:.85rem;font-weight:300;transition:all .2s}
+.fcol a:hover{color:#7eb8ff;padding-left:4px}
+.fabout{font-size:.85rem;font-weight:300;line-height:1.9;margin:18px 0 24px;max-width:330px;color:rgba(255,255,255,.42)}
+.fsoc{display:flex;gap:10px}
+.fsoc a{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);text-decoration:none;font-size:.7rem;font-family:var(--f-mono);font-weight:500;transition:all .25s}
+.fsoc a:hover{background:var(--grad);border-color:transparent;color:#fff;transform:translateY(-3px)}
+.fline{font-size:.85rem;font-weight:300;display:flex;gap:12px;margin-bottom:13px;color:rgba(255,255,255,.48);align-items:flex-start}
+.fline b{color:#7eb8ff;font-family:var(--f-mono);font-size:.64rem;font-weight:500;letter-spacing:1px;min-width:38px;padding-top:3px}
+.fbar{border-top:1px solid rgba(255,255,255,.08);padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.78rem;color:rgba(255,255,255,.28)}
+.fbar a{color:rgba(255,255,255,.4);text-decoration:none}
+.fbar a:hover{color:#7eb8ff}
+
+/* ═ WHATSAPP ═ */
+.wa{position:fixed;bottom:26px;right:26px;z-index:500;width:56px;height:56px;border-radius:18px;background:#25d366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 10px 32px rgba(37,211,102,.5);transition:all .25s}
+.wa:hover{transform:scale(1.1) rotate(6deg)}
+.wa svg{width:29px;height:29px;fill:#fff}
+
+/* ═ RESPONSIVE ═ */
+@media(max-width:1080px){
+  .menu{display:none}.nav-btns .btn-glass{display:none}.burger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:54px;padding-bottom:64px}
+  .hv-chip{display:none}
+  .counters .wrap{grid-template-columns:repeat(2,1fr)}
+  .cnt:nth-child(2){border-right:none}
+  .cnt:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.07)}
+  .bento{grid-template-columns:1fr 1fr}
+  .bcard.wide{grid-column:span 2}
+  .paths{grid-template-columns:1fr}
+  .corp{grid-template-columns:1fr;padding:48px 36px}
+  .contact-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .sa-l{left:-10px}.sa-r{right:-10px}
+}
+@media(max-width:620px){
+  .wrap{padding:0 20px}
+  header .hwrap{padding:0 14px;margin-top:10px}
+  .sec{padding:72px 0}
+  .hero{padding-top:130px}
+  .bento{grid-template-columns:1fr}
+  .bcard.wide{grid-column:span 1}
+  .frow{grid-template-columns:1fr}
+  .counters .wrap{grid-template-columns:1fr}
+  .cnt{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+  .cnt:last-child{border-bottom:none}
+  .corp{padding:38px 24px}
+  .cta{padding:52px 28px}
+  .slide{padding:36px 26px}
+  .form{padding:28px 20px}
+  .fgrid{grid-template-columns:1fr}
+  .sarrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ═══ NAV ═══ -->
+<header id="hdr">
+  <div class="hwrap">
+    <div class="navbox">
+      <a href="#" class="logo">
+        <div class="logo-mark">S/</div>
+        <div>
+          <div class="logo-text">SoftSkill<span>IT</span></div>
+          <span class="logo-sub">Training Institute</span>
+        </div>
+      </a>
+      <ul class="menu">
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#paths">Career Paths</a></li>
+        <li><a href="#corporate">For Companies</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-btns">
+        <a href="#contact" class="btn btn-glass">Free Demo</a>
+        <a href="#contact" class="btn btn-grad">Apply Now</a>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <a href="#courses" onclick="closeM()">Courses</a>
+  <a href="#why" onclick="closeM()">Why Us</a>
+  <a href="#paths" onclick="closeM()">Career Paths</a>
+  <a href="#corporate" onclick="closeM()">For Companies</a>
+  <a href="#faq" onclick="closeM()">FAQ</a>
+  <a href="#contact" onclick="closeM()" style="background:var(--grad);color:#fff">Apply Now →</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hpill rev d1"><span class="px">Admissions Open</span> New batches start every month · Lahore &amp; Online</div>
+      <h1 class="rev d2">Master the Skills<br>That Run the<br><span class="gr">Digital World.</span></h1>
+      <p class="lead rev d3">Job-focused training in <strong>networking, cybersecurity, systems, and cloud</strong> — taught hands-on, on real enterprise equipment, by engineers who do this work every day.</p>
+      <div class="hero-cta rev d4">
+        <a href="#courses" class="btn btn-grad" style="padding:15px 30px;font-size:.92rem">Explore Courses →</a>
+        <a href="#contact" class="btn btn-glass" style="padding:15px 30px;font-size:.92rem">Book Free Demo Class</a>
+      </div>
+      <div class="hero-proof rev d5">
+        <div class="avatars">
+          <span style="background:#2563eb">MU</span><span style="background:#7c3aed">HA</span><span style="background:#0891b2">AR</span><span style="background:#059669">SK</span><span style="background:#1c2a4a">+</span>
+        </div>
+        <div class="hp-text"><span class="st">★★★★★</span><br>Trusted by students now working in <b>NOCs, ISPs &amp; software houses</b></div>
+      </div>
+    </div>
+    <div class="hv rev d3">
+      <div class="term">
+        <div class="term-bar">
+          <span class="tdot" style="background:#ff5f57"></span>
+          <span class="tdot" style="background:#febc2e"></span>
+          <span class="tdot" style="background:#28c840"></span>
+          <span class="term-title">student@softskillit-lab:~</span>
+        </div>
+        <div class="term-body" id="termBody"></div>
+      </div>
+      <div class="hv-chip chip1">
+        <div class="ic" style="background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4)">🎓</div>
+        <div><div class="t">Certificate Awarded</div><div class="s">Verified on completion</div></div>
+      </div>
+      <div class="hv-chip chip2">
+        <div class="ic" style="background:rgba(37,99,235,.18);border:1px solid rgba(37,99,235,.45)">🖧</div>
+        <div><div class="t">Live Lab Session</div><div class="s">Real Cisco &amp; Fortinet gear</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- tech marquee -->
+  <div class="mq">
+    <div class="mq-track">
+      <span class="mq-item">CISCO</span><span class="mq-item">FORTINET</span><span class="mq-item">MIKROTIK</span><span class="mq-item">AWS</span><span class="mq-item">LINUX</span><span class="mq-item">DOCKER</span><span class="mq-item">TERRAFORM</span><span class="mq-item">WINDOWS SERVER</span><span class="mq-item">VMWARE</span><span class="mq-item">ZABBIX</span>
+      <span class="mq-item">CISCO</span><span class="mq-item">FORTINET</span><span class="mq-item">MIKROTIK</span><span class="mq-item">AWS</span><span class="mq-item">LINUX</span><span class="mq-item">DOCKER</span><span class="mq-item">TERRAFORM</span><span class="mq-item">WINDOWS SERVER</span><span class="mq-item">VMWARE</span><span class="mq-item">ZABBIX</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COUNTERS ═══ -->
+<div class="counters">
+  <div class="wrap">
+    <div class="cnt"><div class="cnt-num"><em data-count="7">0</em>+</div><div class="cnt-lbl">Professional Courses</div></div>
+    <div class="cnt"><div class="cnt-num"><em data-count="100">0</em>%</div><div class="cnt-lbl">Lab-Based Training</div></div>
+    <div class="cnt"><div class="cnt-num"><em data-count="10">0</em></div><div class="cnt-lbl">Max Students Per Batch</div></div>
+    <div class="cnt"><div class="cnt-num"><em data-count="5">0</em>+ Yrs</div><div class="cnt-lbl">Industry-Active Trainers</div></div>
+  </div>
+</div>
+
+<!-- ═══ COURSES ═══ -->
+<section class="sec" id="courses">
+  <div class="wrap">
+    <div class="head-block">
+      <span class="kick rev">Our Programs</span>
+      <h2 class="rev">Courses Built for <span class="gr">Real Jobs</span></h2>
+      <p class="sub rev">Every program maps directly to roles employers are hiring for — taught in the lab, on real hardware, with exam prep included.</p>
+    </div>
+    <div class="tabs rev">
+      <button class="tab on" data-f="all">All Courses</button>
+      <button class="tab" data-f="net">Networking</button>
+      <button class="tab" data-f="sec">Security</button>
+      <button class="tab" data-f="sys">Systems</button>
+      <button class="tab" data-f="cld">Cloud &amp; DevOps</button>
+    </div>
+    <div class="cgrid" id="cgrid">
+
+      <div class="course rev d1" data-cat="net">
+        <div class="co-top"><div class="co-ico i-blue">CCNA</div><span class="badge b-hot">🔥 Most Popular</span></div>
+        <div class="co-name">CCNA 200-301</div>
+        <p class="co-desc">The industry-standard entry point for every network engineer — from absolute zero to job-ready.</p>
+        <div class="co-meta"><span>⏱ 3 Months</span><span>📍 Onsite + Online</span><span>🎯 Beginner</span></div>
+        <ul class="co-list">
+          <li>IP addressing &amp; subnetting from scratch</li>
+          <li>VLANs, STP &amp; routing on real Cisco switches</li>
+          <li>OSPF, NAT, ACLs, DHCP &amp; wireless basics</li>
+          <li>Cisco 200-301 exam preparation</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 25,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('CCNA 200-301')">Enroll →</a></div>
+      </div>
+
+      <div class="course rev d2" data-cat="net">
+        <div class="co-top"><div class="co-ico i-prp">CCNP</div><span class="badge b-adv">Advanced</span></div>
+        <div class="co-name">CCNP Enterprise</div>
+        <p class="co-desc">Step up to senior network roles with advanced routing, switching, and enterprise design.</p>
+        <div class="co-meta"><span>⏱ 4 Months</span><span>📍 Onsite + Online</span><span>🎯 Advanced</span></div>
+        <ul class="co-list">
+          <li>Multi-area OSPF, EIGRP &amp; BGP fundamentals</li>
+          <li>Enterprise switching &amp; high availability</li>
+          <li>VPNs, QoS &amp; Cisco Nexus exposure</li>
+          <li>ENCOR 350-401 exam preparation</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 40,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('CCNP Enterprise')">Enroll →</a></div>
+      </div>
+
+      <div class="course rev d3" data-cat="net">
+        <div class="co-top"><div class="co-ico i-cyn">MTK</div><span class="badge b-std">ISP Track</span></div>
+        <div class="co-name">MikroTik MTCNA</div>
+        <p class="co-desc">The fastest route into Pakistan's ISP industry — RouterOS mastery on real hardware.</p>
+        <div class="co-meta"><span>⏱ 6 Weeks</span><span>📍 Onsite Lab</span><span>🎯 Beginner</span></div>
+        <ul class="co-list">
+          <li>RouterOS, DHCP, NAT &amp; firewall rules</li>
+          <li>Bandwidth management, queues &amp; hotspot</li>
+          <li>PPPoE server &amp; wireless bridging</li>
+          <li>MTCNA certification preparation</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 15,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('MikroTik MTCNA')">Enroll →</a></div>
+      </div>
+
+      <div class="course rev d1" data-cat="sec">
+        <div class="co-top"><div class="co-ico i-red">NSE</div><span class="badge b-hot">🔥 In Demand</span></div>
+        <div class="co-name">Fortinet Firewall (NSE)</div>
+        <p class="co-desc">Enterprise firewall skills that companies pay a premium for — on real FortiGate devices.</p>
+        <div class="co-meta"><span>⏱ 6 Weeks</span><span>📍 Onsite Lab</span><span>🎯 Intermediate</span></div>
+        <ul class="co-list">
+          <li>FortiGate deployment, policies &amp; profiles</li>
+          <li>SSL &amp; IPsec VPN — site-to-site &amp; remote</li>
+          <li>Web filtering, IPS, SD-WAN basics &amp; HA</li>
+          <li>Real enterprise audit scenarios</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 20,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('Fortinet Firewall')">Enroll →</a></div>
+      </div>
+
+      <div class="course rev d2" data-cat="sys">
+        <div class="co-top"><div class="co-ico i-grn">LNX</div><span class="badge b-std">Systems</span></div>
+        <div class="co-name">Linux Administration</div>
+        <p class="co-desc">The backbone skill of every server room and cloud platform. Ubuntu Server, end to end.</p>
+        <div class="co-meta"><span>⏱ 2 Months</span><span>📍 Onsite + Online</span><span>🎯 Beginner</span></div>
+        <ul class="co-list">
+          <li>CLI mastery, users, permissions &amp; services</li>
+          <li>SSH hardening &amp; firewalls (UFW/iptables)</li>
+          <li>Bash scripting &amp; automation with cron</li>
+          <li>Web, DNS &amp; file servers (Nginx, Samba)</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 18,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('Linux Administration')">Enroll →</a></div>
+      </div>
+
+      <div class="course rev d3" data-cat="sys">
+        <div class="co-top"><div class="co-ico i-slt">WIN</div><span class="badge b-std">Systems</span></div>
+        <div class="co-name">Windows Server &amp; Active Directory</div>
+        <p class="co-desc">Run corporate IT environments: domains, group policies, and user management at scale.</p>
+        <div class="co-meta"><span>⏱ 2 Months</span><span>📍 Onsite Lab</span><span>🎯 Beginner</span></div>
+        <ul class="co-list">
+          <li>Server 2019/2022 installation &amp; roles</li>
+          <li>Active Directory, DCs &amp; Group Policy</li>
+          <li>DNS, DHCP, file shares &amp; WDS</li>
+          <li>Backup, monitoring &amp; troubleshooting</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 18,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('Windows Server & AD')">Enroll →</a></div>
+      </div>
+
+      <div class="course rev d2" data-cat="cld">
+        <div class="co-top"><div class="co-ico i-org">AWS</div><span class="badge b-new">🚀 Career Track</span></div>
+        <div class="co-name">AWS Cloud + DevOps Foundations</div>
+        <p class="co-desc">The future-proof track — cloud infrastructure, containers, and automation pipelines.</p>
+        <div class="co-meta"><span>⏱ 3 Months</span><span>📍 Online Live</span><span>🎯 Intermediate</span></div>
+        <ul class="co-list">
+          <li>EC2, S3, VPC, IAM, RDS &amp; CloudWatch</li>
+          <li>Docker containers &amp; image building</li>
+          <li>Terraform basics &amp; Git/GitHub workflows</li>
+          <li>CI/CD with GitHub Actions · SAA-C03 roadmap</li>
+        </ul>
+        <div class="co-foot"><div class="co-fee">Rs. 30,000<small>complete course · installments available</small></div><a href="#contact" class="co-btn" onclick="pickCourse('AWS Cloud + DevOps')">Enroll →</a></div>
+      </div>
+
+    </div>
+    <div class="cnotes rev">
+      <span>💳 Easy installment plans</span>
+      <span>🎓 Bundle discounts for students</span>
+      <span>🆓 Free demo class — pay only if satisfied</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY US (BENTO) ═══ -->
+<section class="sec sec-alt" id="why">
+  <div class="wrap">
+    <div class="head-block">
+      <span class="kick rev">The SoftSkill IT Difference</span>
+      <h2 class="rev">Not Another <span class="gr">Slides-Only</span> Academy</h2>
+      <p class="sub rev">Most institutes teach theory from projectors. We put a console cable in your hand on day one.</p>
+    </div>
+    <div class="bento">
+      <div class="bcard wide rev d1">
+        <div class="b-ico">🖧</div>
+        <h3>A Real Enterprise Lab — Not Simulators</h3>
+        <p>Practice on the exact hardware you'll manage on the job. Configure it, break it, fix it — that's how engineers are made.</p>
+        <div class="lab-tags">
+          <span>Cisco Switches</span><span>FortiGate Firewalls</span><span>MikroTik Routers</span><span>Linux Servers</span><span>Windows AD Lab</span><span>Wireless APs</span>
+        </div>
+      </div>
+      <div class="bcard rev d2">
+        <div class="b-ico">👨‍💻</div>
+        <h3>Industry-Active Trainers</h3>
+        <p>Our trainers manage live enterprise networks every day — you learn current practices, not outdated slides.</p>
+      </div>
+      <div class="bcard rev d1">
+        <div class="b-ico">🎯</div>
+        <h3>Career Support Until Hired</h3>
+        <p>CV building, LinkedIn review, mock technical interviews, and job referrals — included free with every course.</p>
+      </div>
+      <div class="bcard rev d2">
+        <div class="b-ico">👥</div>
+        <h3>Small Batches Only</h3>
+        <p>Max 8–10 students per batch. Individual attention and guaranteed dedicated lab time for everyone.</p>
+      </div>
+      <div class="bcard rev d3">
+        <div class="b-ico">🕐</div>
+        <h3>Flexible Timings</h3>
+        <p>Morning, evening &amp; weekend batches — plus full live online courses for remote students worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAREER PATHS ═══ -->
+<section class="sec" id="paths">
+  <div class="wrap">
+    <div class="head-block">
+      <span class="kick rev">Career Roadmaps</span>
+      <h2 class="rev">Choose Your <span class="gr">Path</span></h2>
+      <p class="sub rev">Not sure where to start? Follow a structured roadmap — each path stacks courses in the right order and ends in a hireable role.</p>
+    </div>
+    <div class="paths">
+      <div class="path rev d1">
+        <span class="path-tag pt-a">Path 01 · Network Engineer</span>
+        <h3>Networking Track</h3>
+        <p class="pd">From zero to enterprise network engineer — the most in-demand IT role in Pakistan.</p>
+        <div class="chain">
+          <div class="ch"><span class="n">1</span><div><div class="t">CCNA 200-301</div><div class="s">Foundations + routing &amp; switching</div></div></div>
+          <div class="ch"><span class="n">2</span><div><div class="t">MikroTik MTCNA</div><div class="s">ISP-side skills &amp; RouterOS</div></div></div>
+          <div class="ch"><span class="n">3</span><div><div class="t">CCNP Enterprise</div><div class="s">Senior-level routing &amp; design</div></div></div>
+        </div>
+        <div class="dur"><span>Total duration</span><b>~8 Months</b></div>
+      </div>
+      <div class="path rev d2">
+        <span class="path-tag pt-b">Path 02 · Security Engineer</span>
+        <h3>Security Track</h3>
+        <p class="pd">Specialize in the highest-paying corner of infrastructure — firewalls and network security.</p>
+        <div class="chain">
+          <div class="ch"><span class="n">1</span><div><div class="t">CCNA 200-301</div><div class="s">Networking foundation first</div></div></div>
+          <div class="ch"><span class="n">2</span><div><div class="t">Fortinet Firewall (NSE)</div><div class="s">Enterprise firewall mastery</div></div></div>
+          <div class="ch"><span class="n">3</span><div><div class="t">Linux Administration</div><div class="s">Server-side security skills</div></div></div>
+        </div>
+        <div class="dur"><span>Total duration</span><b>~6 Months</b></div>
+      </div>
+      <div class="path rev d3">
+        <span class="path-tag pt-c">Path 03 · Cloud Engineer</span>
+        <h3>Cloud &amp; DevOps Track</h3>
+        <p class="pd">The future-proof career — infrastructure as code, containers, and AWS cloud.</p>
+        <div class="chain">
+          <div class="ch"><span class="n">1</span><div><div class="t">Linux Administration</div><div class="s">The foundation of all cloud work</div></div></div>
+          <div class="ch"><span class="n">2</span><div><div class="t">AWS Cloud + DevOps</div><div class="s">EC2, Docker, Terraform, CI/CD</div></div></div>
+          <div class="ch"><span class="n">3</span><div><div class="t">AWS SAA-C03 Exam</div><div class="s">Guided certification roadmap</div></div></div>
+        </div>
+        <div class="dur"><span>Total duration</span><b>~5 Months</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CORPORATE ═══ -->
+<section class="sec sec-alt" id="corporate">
+  <div class="wrap">
+    <div class="corp rev">
+      <div>
+        <span class="kick">For Companies</span>
+        <h2>Corporate Training &amp; IT Consultancy</h2>
+        <p class="sub">We also train teams and support businesses directly — upskill your IT staff on-site, or bring us in to design, secure, and document your infrastructure.</p>
+        <a href="#contact" class="btn btn-white" onclick="pickCourse('Corporate Training / Consultancy')">Request a Proposal →</a>
+      </div>
+      <div class="corp-list">
+        <div class="citem"><div class="ic">🏢</div><div><div class="t">On-Site Team Training</div><div class="s">Customized workshops for your IT department — networking, firewall, Linux, or cloud.</div></div></div>
+        <div class="citem"><div class="ic">🛡️</div><div><div class="t">Network Design &amp; Security Audit</div><div class="s">LAN/WAN architecture, firewall policy review, and audits aligned with SOC 2 / ISO 27001.</div></div></div>
+        <div class="citem"><div class="ic">⚙️</div><div><div class="t">Infrastructure Setup</div><div class="s">Server deployment, CCTV &amp; biometrics, structured cabling, and monitoring (Zabbix / PRTG).</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="head-center">
+      <span class="kick rev">Student Success</span>
+      <h2 class="rev">From Our Lab to <span class="gr">Real Jobs</span></h2>
+    </div>
+    <div class="slider rev">
+      <button class="sarrow sa-l" onclick="slide(-1)" aria-label="Previous">←</button>
+      <div class="slides">
+        <div class="slide-track" id="strack">
+          <div class="slide">
+            <div class="stars">★★★★★</div>
+            <p class="q">"I joined with zero networking background. Within 3 months I could subnet, configure VLANs, and run OSPF confidently. Two months after finishing CCNA, I landed my first NOC job."</p>
+            <div class="who"><div class="av">MU</div><div><div class="nm">Muhammad Usman</div><div class="rl">CCNA Graduate · NOC Engineer</div></div></div>
+          </div>
+          <div class="slide">
+            <div class="stars">★★★★★</div>
+            <p class="q">"The Fortinet course was pure hands-on. We configured real FortiGate firewalls, built VPN tunnels, even ran a mock security audit. They teach what companies actually need."</p>
+            <div class="who"><div class="av">HA</div><div><div class="nm">Hassan Ali</div><div class="rl">Fortinet Graduate · IT Officer</div></div></div>
+          </div>
+          <div class="slide">
+            <div class="stars">★★★★★</div>
+            <p class="q">"Evening batch fit perfectly with my job. The Linux course gave me the confidence to move from helpdesk to system administrator. The CV and interview prep was a bonus."</p>
+            <div class="who"><div class="av">AR</div><div><div class="nm">Abdul Rehman</div><div class="rl">Linux Graduate · System Admin</div></div></div>
+          </div>
+        </div>
+      </div>
+      <button class="sarrow sa-r" onclick="slide(1)" aria-label="Next">→</button>
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec sec-alt" id="faq">
+  <div class="wrap">
+    <div class="head-center">
+      <span class="kick rev">FAQ</span>
+      <h2 class="rev">Common Questions</h2>
+    </div>
+    <div class="faq">
+      <details class="qa rev d1"><summary>I have no IT background. Can I still join?</summary><div class="ans">Yes. CCNA, MikroTik, and Linux courses all start from absolute zero. The free demo class will help you and the trainer confirm the right starting point for you.</div></details>
+      <details class="qa rev d2"><summary>Are classes online or physical?</summary><div class="ans">Both. Most courses run onsite in Lahore with full lab access, and several are also offered as live online batches. Online students get remote lab access for practice.</div></details>
+      <details class="qa rev d3"><summary>Will I get a certificate?</summary><div class="ans">Yes — every student receives a verified completion certificate from SoftSkill IT. We also prepare you for the official vendor exams (Cisco, MikroTik, Fortinet, AWS), which are separate international certifications.</div></details>
+      <details class="qa rev d4"><summary>Do you help with jobs?</summary><div class="ans">Every course includes CV building, LinkedIn profile review, and mock technical interviews. We also refer strong students to openings in our industry network. We prepare you thoroughly, though final hiring always depends on the employer.</div></details>
+      <details class="qa rev d5"><summary>Can I pay in installments?</summary><div class="ans">Yes. Every course has an installment plan — typically a registration amount to reserve your seat, with the remainder split across the course duration. Details are shared during admission.</div></details>
+      <details class="qa rev d6"><summary>What are the batch timings?</summary><div class="ans">Morning, evening, and weekend batches run for most courses, designed around students and working professionals. New batches start every month; seats are capped at 8–10 students.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta rev">
+      <h2>Your IT career starts with<br>one <span class="gr">free class.</span></h2>
+      <p>Sit in. Meet the trainer. Touch the equipment. Decide after — not before.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-grad" style="padding:16px 32px;font-size:.94rem">Book My Free Demo →</a>
+        <a href="https://wa.me/923038116938" target="_blank" class="btn btn-glass" style="padding:16px 32px;font-size:.94rem">WhatsApp Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="head-block">
+      <span class="kick rev">Get In Touch</span>
+      <h2 class="rev">Apply or <span class="gr">Ask Anything</span></h2>
+      <p class="sub rev">Fill the form and our admissions team will contact you within a few hours — or message us directly on WhatsApp.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo rev">
+        <div class="cbox"><div class="ic">📞</div><div><div class="l">Phone / WhatsApp</div><div class="v"><a href="https://wa.me/923038116938">0303 811 6938</a></div></div></div>
+        <div class="cbox"><div class="ic">✉️</div><div><div class="l">Email</div><div class="v"><a href="mailto:info@softskillit.com">info@softskillit.com</a></div></div></div>
+        <div class="cbox"><div class="ic">📍</div><div><div class="l">Campus</div><div class="v">Gulberg, Lahore, Punjab, Pakistan</div></div></div>
+        <div class="cbox"><div class="ic">🕐</div><div><div class="l">Timings</div><div class="v">Mon–Sat · 10:00 AM – 9:00 PM</div></div></div>
+        <div class="cbox"><div class="ic">🌐</div><div><div class="l">Online Batches</div><div class="v">Available worldwide · live sessions</div></div></div>
+      </div>
+      <form class="form rev d2" onsubmit="handleForm(event)">
+        <h3>Admission &amp; Inquiry Form</h3>
+        <p class="fs">New batches start every month — seats limited to 8–10 per batch.</p>
+        <div class="frow">
+          <div class="fg"><label>Full Name</label><input type="text" placeholder="Muhammad Ali" required></div>
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="03XX XXX XXXX" required></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Course Interested In</label>
+            <select id="courseSelect" required>
+              <option value="" disabled selected>Select a course</option>
+              <option>CCNA 200-301</option>
+              <option>CCNP Enterprise</option>
+              <option>MikroTik MTCNA</option>
+              <option>Fortinet Firewall</option>
+              <option>Linux Administration</option>
+              <option>Windows Server &amp; AD</option>
+              <option>AWS Cloud + DevOps</option>
+              <option>Corporate Training / Consultancy</option>
+              <option>Not sure — need guidance</option>
+            </select>
+          </div>
+          <div class="fg"><label>Preferred Timing</label>
+            <select required>
+              <option value="" disabled selected>Select timing</option>
+              <option>Morning Batch</option>
+              <option>Evening Batch</option>
+              <option>Weekend Batch</option>
+              <option>Online (Live)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg full"><label>Message (Optional)</label><textarea placeholder="Tell us about your background or ask a question…"></textarea></div>
+        <button type="submit" class="btn btn-grad fsub" id="submitBtn">Submit Application →</button>
+        <p class="fnote" id="formNote"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fcol">
+        <a href="#" class="logo">
+          <div class="logo-mark">S/</div>
+          <div>
+            <div class="logo-text">SoftSkill<span>IT</span></div>
+            <span class="logo-sub">Training Institute</span>
+          </div>
+        </a>
+        <p class="fabout">Pakistan's hands-on IT training institute. We turn beginners into job-ready network, security, and cloud professionals through lab-based learning on real enterprise equipment.</p>
+        <div class="fsoc">
+          <a href="https://wa.me/923038116938" target="_blank" title="WhatsApp">WA</a>
+          <a href="https://www.linkedin.com/in/ahsan-ul-haq-b23538195/" target="_blank" title="LinkedIn">in</a>
+          <a href="https://github.com/softskillit-com" target="_blank" title="GitHub">GH</a>
+          <a href="#" title="Facebook">FB</a>
+          <a href="#" title="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="#courses">CCNA 200-301</a></li>
+          <li><a href="#courses">CCNP Enterprise</a></li>
+          <li><a href="#courses">MikroTik MTCNA</a></li>
+          <li><a href="#courses">Fortinet Firewall</a></li>
+          <li><a href="#courses">Linux Administration</a></li>
+          <li><a href="#courses">AWS Cloud + DevOps</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Institute</h4>
+        <ul>
+          <li><a href="#why">Why SoftSkill IT</a></li>
+          <li><a href="#paths">Career Paths</a></li>
+          <li><a href="#corporate">Corporate Training</a></li>
+          <li><a href="#reviews">Student Success</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact</h4>
+        <div class="fline"><b>TEL</b><span>0303 811 6938 — Call / WhatsApp</span></div>
+        <div class="fline"><b>MAIL</b><span>info@softskillit.com</span></div>
+        <div class="fline"><b>LOC</b><span>Gulberg, Lahore, Punjab, Pakistan</span></div>
+        <div class="fline"><b>TIME</b><span>Mon–Sat · 10 AM – 9 PM</span></div>
+      </div>
+    </div>
+    <div class="fbar">
+      <span>© 2026 SoftSkill IT Training Institute. All rights reserved.</span>
+      <span><a href="#courses">Courses</a> &nbsp;·&nbsp; <a href="#paths">Career Paths</a> &nbsp;·&nbsp; <a href="#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ WHATSAPP FLOAT ═══ -->
+<a href="https://wa.me/923038116938?text=Hi%20SoftSkill%20IT%2C%20I%20want%20course%20information" target="_blank" class="wa" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.27z"/></svg>
+</a>
+
+<script>
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: .08 });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+document.querySelectorAll('.hero .rev').forEach(el => setTimeout(() => el.classList.add('in'), 60));
+
+/* header + progress */
+const hdr = document.getElementById('hdr');
+const prog = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', scrollY > 10);
+  const h = document.documentElement.scrollHeight - innerHeight;
+  prog.style.width = (scrollY / h * 100) + '%';
+});
+
+/* mobile menu */
+const burger = document.getElementById('burger');
+const mmenu = document.getElementById('mmenu');
+function closeM(){ burger.classList.remove('open'); mmenu.classList.remove('open'); document.body.style.overflow=''; }
+burger.addEventListener('click', () => {
+  const o = burger.classList.toggle('open');
+  mmenu.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+
+/* typing terminal */
+const lines = [
+  ['cm','# Day 1 at SoftSkill IT'],
+  ['cmd','enroll --course ccna --batch evening'],
+  ['ok','✓ Seat confirmed · Lab access granted'],
+  ['cmd','ssh student@cisco-lab-01'],
+  ['ok','Connected to real Cisco switch...'],
+  ['sw','enable'],
+  ['sw2','configure terminal'],
+  ['y','→ This is where careers start.']
+];
+const tb = document.getElementById('termBody');
+let li = 0;
+function typeLine(){
+  if (li >= lines.length){ tb.insertAdjacentHTML('beforeend','<span class="cursor"></span>'); return; }
+  const [type, text] = lines[li];
+  const el = document.createElement('span'); el.className = 'tl';
+  if (type === 'cm') el.innerHTML = `<span class="cm">${text}</span>`;
+  else if (type === 'ok') el.innerHTML = `<span class="ok">${text}</span>`;
+  else if (type === 'y') el.innerHTML = `<span class="y">${text}</span>`;
+  else if (type === 'sw') el.innerHTML = `<span class="p">Switch&gt;</span> <span class="c">${text}</span>`;
+  else if (type === 'sw2') el.innerHTML = `<span class="p">Switch#</span> <span class="c">${text}</span>`;
+  else el.innerHTML = `<span class="p">$</span> <span class="c">${text}</span>`;
+  tb.appendChild(el);
+  li++;
+  setTimeout(typeLine, type === 'ok' ? 550 : 420);
+}
+setTimeout(typeLine, 700);
+
+/* animated counters */
+const cio = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.count;
+    let cur = 0;
+    const step = Math.max(1, Math.ceil(target / 50));
+    const tick = () => { cur = Math.min(target, cur + step); el.textContent = cur; if (cur < target) requestAnimationFrame(tick); };
+    tick();
+    cio.unobserve(el);
+  });
+}, { threshold: .5 });
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+/* course filter tabs */
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+  t.classList.add('on');
+  const f = t.dataset.f;
+  document.querySelectorAll('.course').forEach(c => {
+    c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f);
+  });
+}));
+
+/* testimonial slider */
+const track = document.getElementById('strack');
+const total = track.children.length;
+const dotsEl = document.getElementById('dots');
+let cur = 0, timer;
+for (let i = 0; i < total; i++) {
+  const d = document.createElement('button');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  d.setAttribute('aria-label', 'Slide ' + (i+1));
+  d.onclick = () => go(i);
+  dotsEl.appendChild(d);
+}
+function go(i){
+  cur = (i + total) % total;
+  track.style.transform = `translateX(-${cur * 100}%)`;
+  [...dotsEl.children].forEach((d, x) => d.classList.toggle('on', x === cur));
+  restart();
+}
+function slide(dir){ go(cur + dir); }
+function restart(){ clearInterval(timer); timer = setInterval(() => go(cur + 1), 6000); }
+restart();
+
+/* course pre-select */
+function pickCourse(name){
+  const sel = document.getElementById('courseSelect');
+  [...sel.options].forEach(o => { if (o.text === name) sel.value = o.text; });
+}
+
+/* form */
+function handleForm(e){
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const note = document.getElementById('formNote');
+  btn.textContent = 'Submitting…'; btn.disabled = true; btn.style.opacity = '.65';
+  setTimeout(() => {
+    btn.textContent = '✓ Application Received';
+    btn.style.opacity = '1';
+    note.textContent = 'Thank you! Our admissions team will contact you within a few hours.';
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = 'Submit Application →';
+      btn.disabled = false;
+      note.textContent = '';
+    }, 5000);
+  }, 1100);
+}
+</script>
+</body>
+</html>
